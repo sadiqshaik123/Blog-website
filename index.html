@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <!-- Add your logo image here -->
+        <img src="img/logo.png" alt="Logo">
+        <h1>Blog Platform</h1>
+    </header>
+    <section id="blog-section">
+        <h2>Create a Blog</h2>
+        <form id="blog-form">
+            <label for="blog-title">Title:</label>
+            <input type="text" id="blog-title" required>
+            <label for="blog-content">Content:</label>
+            <textarea id="blog-content" rows="5" required></textarea>
+            <label for="blog-image">Upload Image:</label>
+            <input type="file" id="blog-image" accept="image/*" required>
+            <button id="upload-button" type="button">Upload Image</button>
+            <button type="submit">Publish</button>
+        </form>
+        <h2>Read the Blogs</h2>
+        <div id="blogs-container"></div>
+        <button id="show-more">Show More</button>
+    </section>
+    <script src="scripts.js"></script>
+    <script>
+        // Load the blogs from the JSON file
+        fetch('blogs.json')
+          .then(response => response.json())
+          .then(data => {
+            // Pass the loaded data to your JavaScript code
+            initializeBlogDisplay(data);
+          })
+          .catch(error => {
+            console.error('Error loading blogs:', error);
+          });
+    </script>
+</body>
+</html>
